@@ -4,6 +4,17 @@ export const Work_Types = [
   "Yoga",
   "Strength",
   "Swimming",
+  "Weightlifting",
+  "Pilates",
+  "Hiking",
+  "Rowing",
+  "Boxing",
+  "Dancing",
+  "CrossFit",
+  "Martial Arts",
+  "Stretching",
+  "Jump Rope",
+  "Tai Chi"
 ] as const;
 
 export type WorkoutType = (typeof Work_Types)[number];
