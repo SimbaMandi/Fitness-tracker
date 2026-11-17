@@ -1,4 +1,4 @@
-export const WORKOUT_TYPES = [
+export const Work_Types = [
   "Running",
   "Cycling",
   "Yoga",
@@ -6,7 +6,7 @@ export const WORKOUT_TYPES = [
   "Swimming",
 ] as const;
 
-export type WorkoutType = (typeof WORKOUT_TYPES)[number];
+export type WorkoutType = (typeof Work_Types)[number];
 
 export interface Workout {
   id: number;
