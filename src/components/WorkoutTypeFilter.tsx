@@ -1,4 +1,4 @@
-import { WORKOUT_TYPES } from "../types";
+import { Work_Types } from "../types";
 import type { WorkoutType } from "../types";
 
 type WorkoutTypeFilterProps = {
