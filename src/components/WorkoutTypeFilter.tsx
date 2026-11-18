@@ -25,7 +25,7 @@ export default function WorkoutTypeFilter({
         className="w-full rounded-lg border border-gray-300 bg-white p-3"
       >
         <option value="All">All types</option>
-        {WORKOUT_TYPES.map((t) => (
+        {Work_Types.map((t) => (
           <option key={t} value={t}>
             {t}
           </option>
