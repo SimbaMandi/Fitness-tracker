@@ -7,6 +7,7 @@ import CombineLoginpage from "./components/CombineLoginpage";
 function App() {
   const { workouts, loading } = useWorkouts();
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
  const totalCalories = workouts
   .filter((workout) => workout.completed)
@@ -32,6 +33,13 @@ function App() {
   const filteredWorkouts = workouts.filter((workout) =>
     workout.type.toLowerCase().includes(searchTerm.trim().toLowerCase())
   );
+if (!isLoggedIn) {
+  return (
+    <CombineLoginpage
+      onLoginSuccess={() => setIsLoggedIn(true)}
+    />
+  );
+}
 
   if (loading) {
     return <p className="p-8 text-center">Loading workouts...</p>;
