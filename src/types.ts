@@ -1,14 +1,14 @@
 export interface Workout {
-  id: string
-  type: 'Running' | 'Cycling' | 'Yoga' | 'Strength' | 'Swimming'
-  duration: number // minutes
-  calories: number // calories burned
-  date: string
-  completed: boolean
+  id: number;
+  type: string;
+  duration: number;
+  calories: number;
+  date: string;
+  completed: boolean;
 }
 
 export interface WorkoutStats {
-  totalCalories: number
-  totalMinutes: number
-  notCompleted: number
-}  
+  totalCalories: number;
+  totalMinutes: number;
+  notCompleted: number;
+}
