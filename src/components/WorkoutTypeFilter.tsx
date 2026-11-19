@@ -11,10 +11,10 @@ export default function WorkoutTypeFilter({
   onTypeChange,
 }: WorkoutTypeFilterProps) {
   return (
-    <div className="mb-4">
+    <div className="flex items-center gap-3">
       <label
         htmlFor="workout-type-filter"
-        className="mb-2 block text-sm font-medium"
+        className="whitespace-nowrap text-sm font-medium"
       >
         Workout type
       </label>
@@ -22,9 +22,9 @@ export default function WorkoutTypeFilter({
         id="workout-type-filter"
         value={selectedType}
         onChange={(e) => onTypeChange(e.target.value as WorkoutType | "All")}
-        className="w-full rounded-lg border border-gray-300 bg-white p-3"
+        className="w-48 rounded-lg border border-gray-300 bg-white p-2"
       >
-        <option value="All">All types</option>
+        <option value="All">Select workout</option>
         {Work_Types.map((t) => (
           <option key={t} value={t}>
             {t}
