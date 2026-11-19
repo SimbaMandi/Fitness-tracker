@@ -7,6 +7,7 @@ import type { WorkoutType } from "./types";
 
 function App() {
   const { workouts } = useWorkouts();
+
   const [selectedType, setSelectedType] = useState<WorkoutType | "All">("All");
   const [showCompleted, setShowCompleted] = useState(true);
   const [showIncomplete, setShowIncomplete] = useState(true);
@@ -19,16 +20,25 @@ function App() {
   });
 
   return (
-    <div className="mx-auto max-w-md bg-slate-100 p-4">
-      <WorkoutTypeFilter selectedType={selectedType} onTypeChange={setSelectedType} />
-      <CompletedToggle
-        showCompleted={showCompleted}
-        showIncomplete={showIncomplete}
-        onShowCompletedChange={setShowCompleted}
-        onShowIncompleteChange={setShowIncomplete}
-      />
+    <div className="mx-auto max-w-2xl bg-slate-100 p-4">
+      <h1 className="mb-4 text-2xl font-bold">Fitness Tracker</h1>
+
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-4">
+        <WorkoutTypeFilter
+          selectedType={selectedType}
+          onTypeChange={setSelectedType}
+        />
+        <CompletedToggle
+          showCompleted={showCompleted}
+          showIncomplete={showIncomplete}
+          onShowCompletedChange={setShowCompleted}
+          onShowIncompleteChange={setShowIncomplete}
+        />
+      </div>
+
       <WorkoutList workouts={visible} />
     </div>
   );
 }
+
 export default App;
