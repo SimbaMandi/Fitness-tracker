@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 const VALID_EMAIL = 'fitness@gmail.com';
 const VALID_PASSWORD = 'fitness';
 
@@ -7,10 +6,8 @@ export default function LoginForm() {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [status, setStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (email === VALID_EMAIL && password === VALID_PASSWORD) {
       setStatus({ type: 'success', message: 'Login successful!' });
       console.log('Logged in with:', { email, password });
@@ -18,11 +15,9 @@ export default function LoginForm() {
       setStatus({ type: 'error', message: 'Invalid email or password.' });
     }
   };
-
   return (
     <div className="flex min-h-screen items-center justify-center bg-white p-4">
       <div className="w-full max-w-sm">
-       
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold tracking-tight text-green-500">
             Welcome to your Fitness Tracker
@@ -31,8 +26,6 @@ export default function LoginForm() {
             Login to your account
           </p>
         </div>
-
-      
         {status && (
           <div
             className={`mb-4 rounded-xl p-3 text-center text-sm font-medium ${
@@ -44,8 +37,6 @@ export default function LoginForm() {
             {status.message}
           </div>
         )}
-
-      
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email Input */}
           <div className="relative">
@@ -73,8 +64,6 @@ export default function LoginForm() {
               className="w-full rounded-xl border border-gray-300 py-3.5 pl-12 pr-4 text-gray-900 placeholder-gray-500 transition-colors focus:border-green-700 focus:outline-none focus:ring-1 focus:ring-green-700"
             />
           </div>
-
-         
           <div className="relative">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
               <svg
@@ -100,8 +89,6 @@ export default function LoginForm() {
               className="w-full rounded-xl border border-gray-300 py-3.5 pl-12 pr-4 text-gray-900 placeholder-gray-500 transition-colors focus:border-green-700 focus:outline-none focus:ring-1 focus:ring-green-700"
             />
           </div>
-
-        
           <button
             type="submit"
             className="mt-2 w-full rounded-xl bg-[#187A2B] py-3.5 text-lg font-bold text-white transition-colors hover:bg-[#136322] focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-offset-2"
