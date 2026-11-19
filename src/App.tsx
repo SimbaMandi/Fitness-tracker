@@ -2,6 +2,7 @@ import { useState } from "react";
 import WorkoutList from "./components/WorkoutList";
 import WorkoutSearch from "./components/WorkoutSearch";
 import { useWorkouts } from "./hooks/useWorkouts";
+import CombineLoginpage from "./components/CombineLoginpage";
 
 function App() {
   const { workouts, loading } = useWorkouts();
