@@ -1,46 +1,27 @@
 import React from 'react';
-import {RunnerBanner} from './Runner';
+import { RunnerBanner } from './Runner';
 import LoginForm from './LoginForm';
 
-const CombineLoginpage: React.FC = () => {
+interface CombineLoginPageProps {
+  onLoginSuccess: () => void;
+}
+
+const CombineLoginpage: React.FC<CombineLoginPageProps> = ({ onLoginSuccess }) => {
   return (
-    <div
-      style={{
-        position: 'fixed',
-        inset: 0,
-        width: '100vw',
-        height: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: 'linear-gradient(135deg, #27d779 0%, #16323e 100%)',
-        padding: '24px',
-        boxSizing: 'border-box',
-      }}
-    >
-      {/* Unified Card with Two Equal Columns */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          alignItems: 'stretch',
-          width: '100%',
-          maxWidth: '940px',
-          minHeight: '560px',
-          borderRadius: '12px',
-          boxShadow: '0 25px 50px rgba(0, 0, 0, 0.3)',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Left Column Wrapper */}
-        <div style={{ display: 'flex', width: '100%', height: '1000%' }}>
+    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-[#27d779] to-[#16323e] p-4 sm:p-6">
+     
+      <div className="grid grid-cols-1 md:grid-cols-2 w-full max-w-[940px] md:min-h-[560px] rounded-xl shadow-[0_25px_50px_rgba(0,0,0,0.3)] overflow-hidden bg-white">
+        
+     
+        <div className="flex w-full h-full">
           <RunnerBanner />
         </div>
 
-        {/* Right Column Wrapper */}
-        <div style={{ display: 'flex', width: '100%', height: '50%' }}>
-          <LoginForm />
+        
+        <div className="flex w-full h-full">
+          <LoginForm onLoginSuccess={onLoginSuccess} />
         </div>
+
       </div>
     </div>
   );
