@@ -4,7 +4,10 @@ import WorkoutForm from "./components/WorkoutForm";
 import WorkoutStats from "./components/WorkoutStats";
 
 function App() {
-  const { workouts, addWorkout } = useWorkouts();
+  const { workouts, loading, addWorkout } = useWorkouts();
+  if (loading) {
+  return <p className="p-4">Loading workouts...</p>;
+}
 
   return (
     <main className="mx-auto max-w-md bg-slate-100 p-4">

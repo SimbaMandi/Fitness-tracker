@@ -1,10 +1,24 @@
 
-import { useState } from "react";
-import { initialWorkouts } from "../data/workouts";
+import { useState, useEffect } from "react";
 import type { NewWorkout, Workout } from "../types";
+import { getWorkouts } from "../api/workoutsApi";
 
 export function useWorkouts() {
-  const [workouts, setWorkouts] = useState<Workout[]>(initialWorkouts);
+  const [workouts, setWorkouts] = useState<Workout[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    getWorkouts()
+      .then((data: Workout[]) => {
+        setWorkouts(data);
+      })
+      .catch((error: unknown) => {
+        console.error("Failed to load workouts:", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
 
   const addWorkout = (newWorkout: NewWorkout) => {
     setWorkouts((currentWorkouts) => {
@@ -24,5 +38,20 @@ export function useWorkouts() {
     });
   };
 
-  return { workouts, addWorkout };
+  const toggleWorkoutCompletion = (id: number) => {
+    setWorkouts((prev) =>
+      prev.map((workout) =>
+        workout.id === id
+          ? { ...workout, completed: !workout.completed }
+          : workout
+      )
+    );
+  };
+
+  return {
+    workouts,
+    loading,
+    addWorkout,
+    toggleWorkoutCompletion,
+  };
 }
