@@ -1,22 +1,34 @@
 import React, { useState } from 'react';
 
+interface LoginFormProps {
+  onLoginSuccess: () => void;
+}
+
 const VALID_EMAIL = 'fitness@gmail.com';
 const VALID_PASSWORD = 'fitness';
 
-export default function LoginForm() {
+export default function LoginForm({
+  onLoginSuccess,
+}: LoginFormProps) {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [status, setStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+if (email === VALID_EMAIL && password === VALID_PASSWORD) {
+  setStatus({
+    type: "success",
+    message: "Login successful!"
+  });
 
-    if (email === VALID_EMAIL && password === VALID_PASSWORD) {
-      setStatus({ type: 'success', message: 'Login successful!' });
-      console.log('Logged in with:', { email, password });
-    } else {
-      setStatus({ type: 'error', message: 'Invalid email or password.' });
-    }
+  onLoginSuccess();
+} else {
+  setStatus({
+    type: "error",
+    message: "Invalid email or password."
+  });
+}
   };
 
   return (
