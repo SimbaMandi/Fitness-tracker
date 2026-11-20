@@ -1,13 +1,16 @@
 import { useState } from "react";
 import WorkoutList from "./components/WorkoutList";
 import WorkoutSearch from "./components/WorkoutSearch";
+import FilterBar from "./components/FilterBar";
 import { useWorkouts } from "./hooks/useWorkouts";
+import { useWorkoutFilters } from "./hooks/useWorkoutFilters";
 import CombineLoginpage from "./components/CombineLoginpage";
 
 function App() {
   const { workouts, loading } = useWorkouts();
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const filters = useWorkoutFilters(workouts);
 
  const totalCalories = workouts
   .filter((workout) => workout.completed)
@@ -30,7 +33,7 @@ function App() {
       ? Math.round((completed / workouts.length) * 100)
       : 0;
 
-  const filteredWorkouts = workouts.filter((workout) =>
+  const filteredWorkouts = filters.visibleWorkouts.filter((workout) =>
     workout.type.toLowerCase().includes(searchTerm.trim().toLowerCase())
   );
 if (!isLoggedIn) {
@@ -137,6 +140,15 @@ if (!isLoggedIn) {
             onSearchChange={setSearchTerm}
           />
 
+          <FilterBar
+            selectedType={filters.selectedType}
+            onTypeChange={filters.setSelectedType}
+            showCompleted={filters.showCompleted}
+            showIncomplete={filters.showIncomplete}
+            onShowCompletedChange={filters.setShowCompleted}
+            onShowIncompleteChange={filters.setShowIncomplete}
+          />
+
           <WorkoutList workouts={filteredWorkouts} />
         </section>
 
@@ -145,4 +157,4 @@ if (!isLoggedIn) {
   );
 }
 
-export default App; 
+export default App;
