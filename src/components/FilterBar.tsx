@@ -1,10 +1,10 @@
 import WorkoutTypeFilter from "./WorkoutTypeFilter";
 import CompletedToggle from "./CompletedToggle";
-import type { Work_Types } from "../types";
+import type { WorkoutType } from "../types";
 
 type FilterBarProps = {
-  selectedType: Work_Types | "All";
-  onTypeChange: (type: Work_Types | "All") => void;
+  selectedType: WorkoutType | "All";
+  onTypeChange: (type: WorkoutType | "All") => void;
   showCompleted: boolean;
   showIncomplete: boolean;
   onShowCompletedChange: (checked: boolean) => void;

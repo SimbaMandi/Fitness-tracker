@@ -1,17 +1,4 @@
-type WorkoutType =
-  | "Cardio"
-  | "Strength"
-  | "Flexibility"
-  | "Balance"
-  | "High Intensity";
-
-const workoutTypes: WorkoutType[] = [
-  "Cardio",
-  "Strength",
-  "Flexibility",
-  "Balance",
-  "High Intensity",
-];
+import { Work_Types, type WorkoutType } from "../types";
 
 type WorkoutTypeFilterProps = {
   selectedType: WorkoutType | "All";
@@ -39,7 +26,7 @@ export default function WorkoutTypeFilter({
         className="w-48 rounded-lg border border-gray-300 bg-white p-2"
       >
         <option value="All">Select workout</option>
-        {workoutTypes.map((type) => (
+        {Work_Types.map((type) => (
           <option key={type} value={type}>
             {type}
           </option>

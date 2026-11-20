@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
-import type { Workout, Work_Types } from "../types";
+import type { Workout, WorkoutType } from "../types";
 
 export function useWorkoutFilters(workouts: Workout[]) {
-  const [selectedType, setSelectedType] = useState<Work_Types | "All">("All");
+  const [selectedType, setSelectedType] = useState<WorkoutType | "All">("All");
   const [showCompleted, setShowCompleted] = useState(true);
   const [showIncomplete, setShowIncomplete] = useState(true);
 
