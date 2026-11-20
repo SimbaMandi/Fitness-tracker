@@ -1,8 +1,21 @@
-import { Work_Types } from "../types";
+type WorkoutType =
+  | "Cardio"
+  | "Strength"
+  | "Flexibility"
+  | "Balance"
+  | "High Intensity";
+
+const workoutTypes: WorkoutType[] = [
+  "Cardio",
+  "Strength",
+  "Flexibility",
+  "Balance",
+  "High Intensity",
+];
 
 type WorkoutTypeFilterProps = {
-  selectedType: Work_Types | "All";
-  onTypeChange: (type: Work_Types | "All") => void;
+  selectedType: WorkoutType | "All";
+  onTypeChange: (type: WorkoutType | "All") => void;
 };
 
 export default function WorkoutTypeFilter({
@@ -20,13 +33,15 @@ export default function WorkoutTypeFilter({
       <select
         id="workout-type-filter"
         value={selectedType}
-        onChange={(e) => onTypeChange(e.target.value as Work_Types | "All")}
+        onChange={(e) =>
+          onTypeChange(e.target.value as WorkoutType | "All")
+        }
         className="w-48 rounded-lg border border-gray-300 bg-white p-2"
       >
         <option value="All">Select workout</option>
-        {Work_Types.map((t) => (
-          <option key={t} value={t}>
-            {t}
+        {workoutTypes.map((type) => (
+          <option key={type} value={type}>
+            {type}
           </option>
         ))}
       </select>
