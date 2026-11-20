@@ -1,9 +1,23 @@
-import { useState } from "react";
-import { initialWorkouts } from "../data/workouts";
-import type { Workout } from "../types";
+import { useState, useEffect } from 'react';
+import type { Workout } from '../types';
+import { getWorkouts } from '../api/workoutsApi';
 
-export function useWorkouts() {
-  const [workouts] = useState<Workout[]>(initialWorkouts);
+export const useWorkouts = () => {
+  const [workouts, setWorkouts] = useState<Workout[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  return { workouts };
-}
+  useEffect(() => {
+    getWorkouts().then((data: Workout[]) => {
+      setWorkouts(data);
+      setLoading(false);
+    });
+  }, []);
+
+  const toggleWorkoutCompletion = (id: number) => {
+    setWorkouts((prev) =>
+      prev.map((w) => (w.id === id ? { ...w, completed: !w.completed } : w))
+    );
+  };
+
+  return { workouts, loading, toggleWorkoutCompletion };
+};
