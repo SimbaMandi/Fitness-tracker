@@ -1,9 +1,8 @@
 import { Work_Types } from "../types";
-import type { WorkoutType } from "../types";
 
 type WorkoutTypeFilterProps = {
-  selectedType: WorkoutType | "All";
-  onTypeChange: (type: WorkoutType | "All") => void;
+  selectedType: Work_Types | "All";
+  onTypeChange: (type: Work_Types | "All") => void;
 };
 
 export default function WorkoutTypeFilter({
@@ -21,7 +20,7 @@ export default function WorkoutTypeFilter({
       <select
         id="workout-type-filter"
         value={selectedType}
-        onChange={(e) => onTypeChange(e.target.value as WorkoutType | "All")}
+        onChange={(e) => onTypeChange(e.target.value as Work_Types | "All")}
         className="w-48 rounded-lg border border-gray-300 bg-white p-2"
       >
         <option value="All">Select workout</option>
